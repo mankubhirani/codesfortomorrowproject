@@ -11,7 +11,7 @@ router.patch('/category/:categoryId', categoryController.UpdateCategory);
 router.delete('/category/:categoryId', categoryController.CategoryBydelete);
 router.post('/service/:categoryId', categoryController.createCategoryservice);
 router.get('/services/:categoryId', categoryController.createCategoryservicegetbyid);
-router.delete('/category/service/:serviceId/:categoryId', categoryController.deleteservice);
-// router.put('/category/:categoryId/service/:serviceId', categoryController.SegmentsByidget);
+router.delete('/category/:categoryId/service/:serviceId', categoryController.deleteservice);
+ router.put('/category/:categoryId/service/:serviceId', categoryController.updateservice);
 
 module.exports = router;

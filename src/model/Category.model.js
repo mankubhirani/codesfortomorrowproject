@@ -82,4 +82,24 @@ CategoryModel.createCategoryservicegetbyid = (body,id, callback) => {
 
 
 
+CategoryModel.deleteservice = (id, callback) => {
+    db.query('CALL Delete_Service(?, ?)', [id.serviceId, id.categoryId], (err, result) => {
+        if (err) {
+            return callback(err);
+        }
+        return callback(null, result);
+    });
+};
+
+CategoryModel.updateservice = (id,body,callback) => {
+    db.query('CALL Update_Service(?,?,?,?)', [id.serviceId,body.service_name,body.service_type, id.categoryId], (err, result) => {
+        if (err) {
+            return callback(err);
+        }
+        return callback(null, result);
+    });
+};
+
+
+
 module.exports = CategoryModel;

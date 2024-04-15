@@ -68,9 +68,7 @@ CategoryController.createCategoryservice = (req, res) => {
 
   const id = req.params;
   console.log(id);
-  // console.log(req.body);
-  // const userDetails = verifyJwt(req);
-  //   const { company_id, segment_Name, quantities, is_active } = req.body;
+  
 
   CategoryModel.createCategoryservice(req.body, id, (err, result) => {
     console.log(result);
@@ -118,18 +116,36 @@ CategoryController.deleteservice = (req, res) => {
 
   const id = req.params;
   console.log(id);
-  // console.log(req.body);
-  // const userDetails = verifyJwt(req);
-  //   const { company_id, segment_Name, quantities, is_active } = req.body;
-
-  CategoryModel.deleteservice(req.body, id, (err, result) => {
+  CategoryModel.deleteservice(id,(err, result) => {
     console.log(result);
     if (err) {
       console.error('Error inserting  Category:', err);
       return res.status(500).json({ error: 'Internal server error' });
     }
     return res.status(200).json({
-      message: 'Category get successfull',
+      message: 'Delete service successfull',
+      data: result,
+
+      error: false
+    });
+  });
+
+
+
+};
+
+CategoryController.updateservice = (req, res) => {
+
+  const id = req.params;
+  console.log(id);
+  CategoryModel.updateservice(id,req.body,(err, result) => {
+    console.log(result);
+    if (err) {
+      console.error('Error inserting  Category:', err);
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+    return res.status(200).json({
+      message: 'update service successfull',
       data: result,
 
       error: false
